@@ -1,31 +1,486 @@
 <!doctype html>
-<html lang="ru" data-stub>
+<html lang="ru">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Корпоративный сайт сети столовых · демо готовится</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Добрая кухня — сеть столовых · демо-концепт сайта</title>
+<meta name="description" content="Демо-концепт корпоративного сайта сети столовых: питание для компаний, меню, банкеты, адреса.">
 <meta name="robots" content="noindex">
-<meta http-equiv="refresh" content="120">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Manrope:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Carlito:ital,wght@1,700&display=swap">
 <style>
-:root{--bg:#F6F3EE;--ink:#1F1E1C;--muted:#6B655C;--acc:#8A6737}
-@media (prefers-color-scheme:dark){:root{--bg:#161615;--ink:#EDE7DC;--muted:#A9A195;--acc:#C9A66B}}
-*{box-sizing:border-box}html,body{height:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Manrope,system-ui,sans-serif;display:grid;place-items:center;padding:24px}
-main{max-width:560px;text-align:center;display:flex;flex-direction:column;gap:18px;align-items:center}
-.k{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--acc);font-weight:600}
-h1{font:500 clamp(2rem,6vw,3rem)/1.1 "Cormorant Garamond",Georgia,serif;margin:0;text-wrap:balance}
-p{margin:0;color:var(--muted)}
-.bar{width:220px;height:3px;background:color-mix(in srgb,var(--acc) 20%,transparent);border-radius:3px;overflow:hidden}
-.bar i{display:block;height:100%;width:40%;background:var(--acc);animation:m 1.6s ease-in-out infinite}
-@keyframes m{0%{transform:translateX(-100%)}100%{transform:translateX(250%)}}
-@media (prefers-reduced-motion:reduce){.bar i{animation:none;width:60%}}
+:root{--bg:#fff;--soft:#fff3e2;--mint:#e8f5e9;--line:#f3dfc4;--ink:#2a1a10;--mute:#6f5f52;--acc:#ff6a1f;--acc2:#d94f0a;--accsoft:#ffe3cc;--green:#2f9e57;--r:18px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Manrope,system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.hdr{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hdr .wrap{display:flex;align-items:center;gap:20px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px}
+.logo i{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#ff8a3d,var(--acc2));display:grid;place-items:center;color:#fff;font-style:normal;font-size:17px}
+.nav{display:flex;gap:4px;margin-left:12px;flex:1}
+.nav a{padding:8px 11px;border-radius:10px;font-size:14px;font-weight:600;color:#3b3b42}
+.nav a:hover,.nav a.on{background:var(--soft);color:var(--ink)}
+.tel{font-weight:700;font-size:14px;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1.5px solid var(--acc);background:var(--acc);color:#fff;padding:12px 22px;border-radius:999px;font-weight:700;font-size:14px;cursor:pointer;transition:.2s;white-space:normal;text-align:center}
+.btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(255,106,31,.35)}
+.btn.ghost{background:#fff;color:var(--acc2);border-color:var(--acc)}
+.btn.sm{padding:9px 16px;font-size:13px}
+.burger{display:none;margin-left:auto;background:none;border:0;font-size:26px;cursor:pointer}
+section{padding:64px 0}
+.tag{display:inline-block;background:var(--accsoft);border-radius:999px;padding:5px 12px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--acc2);margin-bottom:14px}
+h1{font-size:clamp(32px,5vw,56px);line-height:1.08;font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(26px,3.4vw,38px);line-height:1.15;font-weight:800;letter-spacing:-.015em}
+h3{font-size:17px;font-weight:700}
+.lead{color:var(--mute);font-size:17px;max-width:560px;margin-top:14px}
+.center{text-align:center}.center .lead{margin-left:auto;margin-right:auto}
+.gray{background:var(--soft)}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.gray .card{border-color:transparent}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero .acts{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.hero{background:linear-gradient(135deg,#fff8ee 0%,#ffe6cc 100%)}
+.hero h1{background:linear-gradient(90deg,var(--ink) 55%,var(--acc2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-art{aspect-ratio:4/3;border-radius:28px;background:var(--soft);overflow:hidden;box-shadow:0 24px 50px rgba(217,79,10,.18)}
+.hero-art svg{width:100%;height:100%}
+.days{display:flex;gap:6px;flex-wrap:wrap;background:#fff;padding:5px;border-radius:999px;width:max-content;max-width:100%}
+.days button{border:0;background:none;padding:8px 14px;border-radius:999px;font-weight:700;font-size:13px;cursor:pointer;color:var(--mute)}
+.days button.on{background:var(--acc);color:#fff}
+.set{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:22px}
+.set .card{padding:0;overflow:hidden}
+.set .pic{aspect-ratio:1/1;background:var(--soft)}
+.set .pic svg,.dish .pic svg,.adr .pic svg,.hall .gal svg{width:100%;height:100%}
+.set .pic img,.dish .pic img,.hero-art img,.hall .gal img{width:100%;height:100%;object-fit:cover;display:block}
+.set .txt{padding:14px 16px 16px}
+.set small{color:var(--mute);display:block;font-size:12.5px}
+.set b{font-size:15px;display:block;margin-bottom:2px}
+.num{width:36px;height:36px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-weight:800;margin-bottom:14px}
+.card p{color:var(--mute);font-size:14.5px;margin-top:6px}
+.logos{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:28px}
+.logos span{width:64px;height:64px;border-radius:18px;background:linear-gradient(135deg,#3bb96a,var(--green));color:#fff;font-weight:800;display:grid;place-items:center;letter-spacing:.02em}
+.stat{text-align:center}.stat b{font-size:34px;font-weight:800;display:block;color:var(--acc2)}
+.stat span{color:var(--mute);font-size:13.5px}
+.rev{display:flex;flex-direction:column;gap:10px}
+.ava{width:46px;height:46px;border-radius:50%;background:var(--soft);display:grid;place-items:center;font-weight:800}
+.promo{border-radius:28px;background:linear-gradient(135deg,#ffb04a,#ff6a1f);color:#fff;padding:36px;display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:center;overflow:hidden}
+.promo .lead{color:#fff9}
+.promo .tag{color:var(--acc2)}
+.promo.light{color:var(--ink)}
+.promo.light .lead{color:var(--mute)}
+.promo h1 span{display:block;font-size:clamp(54px,8vw,92px);line-height:1}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 6px}
+.chips a{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 16px;font-weight:700;font-size:13.5px;cursor:pointer}
+.chips a{color:var(--ink)}
+.chips a:hover{border-color:var(--acc);color:var(--acc2)}
+.cat{margin-top:34px}
+.cat>h3{font-size:19px;margin-bottom:14px;display:flex;gap:10px;align-items:center}
+.dish{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.dish .pic{aspect-ratio:4/3;background:var(--soft)}
+.dish .txt{padding:12px 14px 14px;display:flex;flex-direction:column;gap:3px}
+.dish b{font-size:14.5px}.dish .meta{font-size:12.5px;color:var(--mute)}
+.dish .price{font-weight:800;margin-top:4px;color:var(--acc2);font-size:16px}
+.where{border-radius:28px;background:linear-gradient(135deg,var(--mint),#d6efdb);padding:34px}
+.where .card{border-color:transparent}
+.dlv{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
+.dlv span{background:#fff;border-radius:16px;padding:16px 22px;font-weight:800;font-size:18px}
+.city{margin-top:30px}.city>h3{font-size:20px;margin-bottom:12px}
+.adr .pic{aspect-ratio:16/10;background:var(--soft);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.adr b{display:block;font-size:14.5px}.adr span{font-size:13px;color:var(--mute);display:block}
+form{display:flex;flex-direction:column;gap:12px}
+label{font-size:12.5px;font-weight:700;color:var(--mute);display:flex;flex-direction:column;gap:6px}
+input,select,textarea{border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;background:#fff;width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--acc)}
+.perks{list-style:none;display:grid;gap:10px;margin-top:20px}
+.perks li:before{content:"✓";font-weight:800;margin-right:10px;color:var(--green)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.hall{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+.hall .gal{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.hall .gal div{aspect-ratio:4/3;border-radius:12px;background:var(--soft);overflow:hidden}
+.hall .gal .vid{grid-column:span 3;aspect-ratio:16/7;background:#18181b;display:grid;place-items:center;color:#fff;font-weight:700;font-size:14px}
+.badge{display:inline-block;background:var(--mint);color:var(--green);padding:4px 10px;border-radius:999px;font-size:12px;font-weight:800}
+.ico{font-size:24px;margin-bottom:10px}
+footer{border-top:1px solid var(--line);padding:44px 0 30px;background:var(--soft)}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px}
+footer h4{font-size:13px;margin-bottom:10px}
+footer li{list-style:none;font-size:14px;color:var(--mute);margin-bottom:6px}
+.fbot{margin-top:30px;padding-top:20px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-between;align-items:center;font-size:13.5px;color:var(--mute)}
+.foot__demo{flex-basis:100%}
+.foot__made{font-style:italic}
+.foot__made a{font-family:Carlito,Calibri,sans-serif;font-weight:700;font-style:italic;font-size:1.12em;margin-left:.3em;color:var(--ink)}
+.foot__made a:hover{text-decoration:underline}
+.foot__made img{display:inline-block;width:40px;height:52px;vertical-align:-7px;margin-left:4px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;place-items:center;z-index:60;padding:16px}
+.modal.on{display:grid}
+.modal .box{background:#fff;border-radius:22px;padding:28px;width:min(440px,100%);max-height:92vh;overflow:auto;position:relative}
+.modal .x{position:absolute;right:14px;top:10px;background:none;border:0;font-size:26px;cursor:pointer}
+.modal h3{font-size:21px;margin-bottom:4px}.modal .sub{color:var(--mute);font-size:14px;margin-bottom:16px}
+.ok{display:none;text-align:center;padding:20px 0}.ok.on{display:block}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 20px;border-radius:12px;font-size:14px;z-index:80;opacity:0;transition:.3s;pointer-events:none}
+.toast.on{opacity:1}
+.page{display:none}.page.on{display:block}
+@media (max-width:980px){
+ .nav,.tel{display:none}.burger{display:block}
+ .nav.open{display:flex;position:absolute;top:64px;left:0;right:0;background:#fff;flex-direction:column;padding:12px 20px;border-bottom:1px solid var(--line)}
+ .hero .wrap,.promo,.two,.hall{grid-template-columns:1fr}
+ .g4,.set,.g3{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .fgrid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+ section{padding:44px 0}
+ .g2,.g3{grid-template-columns:1fr}
+ .g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .g4.wide{grid-template-columns:1fr}
+ .promo{padding:24px}.where{padding:22px}
+ .fgrid{grid-template-columns:1fr}
+ .days{border-radius:18px}
+ .hdr .wrap{gap:10px}
+ .logo{font-size:16px;gap:8px;white-space:nowrap}
+ .logo i{width:30px;height:30px}
+ .hdr .btn.sm{padding:8px 12px;font-size:12px}
+}
 </style>
 </head>
-<body><main>
-<div class="k">Демо-версия по вашему ТЗ</div>
-<h1>Корпоративный сайт сети столовых</h1>
-<div class="bar" aria-hidden="true"><i></i></div>
-<p>Сайт сейчас собирается по вашему техническому заданию.<br>Будет готов сегодня к <b>10:20</b> – по этой же ссылке.</p>
-<p style="font-size:.85rem">Страница обновится сама.</p>
-</main></body></html>
+<body>
+<header class="hdr"><div class="wrap">
+  <a class="logo" href="#/"><i>Д</i>Добрая кухня</a>
+  <nav class="nav" id="nav">
+    <a href="#/" data-r="home">Корпоративным</a>
+    <a href="#/menu" data-r="menu">Меню</a>
+    <a href="#/banket" data-r="banket">Банкеты</a>
+    <a href="#/menu-addr" data-r="addr">Филиалы</a>
+    <a href="#/menu-jobs" data-r="jobs">Вакансии</a>
+  </nav>
+  <a class="tel" href="tel:+79000000000">+7 (900) 000-00-00</a>
+  <button class="btn sm" data-open="lead">Связаться</button>
+  <button class="burger" id="burger" aria-label="Меню">☰</button>
+</div></header>
+
+<main>
+<div class="page" id="p-home">
+ <section class="hero"><div class="wrap">
+   <div>
+     <span class="tag">Fresh food</span>
+     <h1>Комплексное питание для вашей команды</h1>
+     <p class="lead">Свежие обеды, доставка по расписанию. Собственное производство — заботимся о вашем сотруднике каждый день.</p>
+     <div class="acts"><button class="btn" data-open="lead">Начать сотрудничество</button><a class="btn ghost" href="#week">Смотреть меню</a></div>
+   </div>
+   <div class="hero-art" id="heroArt"></div>
+ </div></section>
+
+ <section id="week" class="gray"><div class="wrap">
+   <span class="tag" style="background:#fff">Меню</span>
+   <h2>На этой неделе</h2>
+   <p class="lead">Сбалансированные обеды от шеф-повара.</p>
+   <div class="days" id="days" style="margin-top:22px"></div>
+   <div class="set" id="set"></div>
+   <div style="margin-top:20px;text-align:right"><button class="btn ghost sm" data-toast="В демо файл PDF не прикреплён">Скачать PDF</button></div>
+ </div></section>
+
+ <section><div class="wrap center">
+   <span class="tag">Процесс</span>
+   <h2>Как стать клиентом</h2>
+   <p class="lead">Всего несколько шагов — и мы начнём кормить вашу команду.</p>
+   <div class="grid g4 wide" style="margin-top:30px;text-align:left">
+     <div class="card"><div class="num">1</div><h3>Оставьте заявку</h3><p>Расскажите о задачах — мы предложим меню.</p></div>
+     <div class="card"><div class="num">2</div><h3>Согласуем детали</h3><p>Уточним состав, график и стоимость.</p></div>
+     <div class="card"><div class="num">3</div><h3>Запускаем поставки</h3><p>Каждый день — свежие обеды точно вовремя.</p></div>
+     <div class="card"><div class="num">4</div><h3>Получайте отчёт</h3><p>Ежемесячная статистика и обратная связь.</p></div>
+   </div>
+ </div></section>
+
+ <section class="gray"><div class="wrap center">
+   <span class="tag" style="background:#fff">Доверие</span>
+   <h2>Наши партнёры</h2>
+   <p class="lead">Более 120 компаний выбирают нас каждый день.</p>
+   <div class="logos"><span>ТК</span><span>ФБ</span><span>МК</span><span>СМ</span><span>ЭП</span><span>ЛГ</span></div>
+   <div class="grid g4" style="margin-top:34px">
+     <div class="card stat"><b>10+</b><span>лет на рынке</span></div>
+     <div class="card stat"><b>120+</b><span>компаний-клиентов</span></div>
+     <div class="card stat"><b>97%</b><span>удовлетворённость</span></div>
+     <div class="card stat"><b>5000+</b><span>обедов в день</span></div>
+   </div>
+   <div class="grid g4 wide" style="margin-top:16px;text-align:left" id="revs"></div>
+ </div></section>
+
+ <section><div class="wrap two">
+   <div class="hero-art" id="aboutArt" style="aspect-ratio:5/4"></div>
+   <div>
+     <span class="tag">О компании</span>
+     <h2>Готовим как для себя</h2>
+     <p class="lead">«Добрая кухня» — это современная столовая с собственным производством. Ежедневно мы готовим более 5000 обедов, используя только свежие продукты от местных поставщиков.</p>
+     <div class="grid g3" style="margin-top:24px">
+       <div class="stat" style="text-align:left"><b>10+</b><span>лет на рынке</span></div>
+       <div class="stat" style="text-align:left"><b>5000+</b><span>обедов в день</span></div>
+       <div class="stat" style="text-align:left"><b>97%</b><span>довольных клиентов</span></div>
+     </div>
+   </div>
+ </div></section>
+
+ <section class="gray"><div class="wrap center">
+   <span class="tag" style="background:#fff">Почему мы</span>
+   <h2>Наши преимущества</h2>
+   <p class="lead">Всё продумано для вашего комфорта.</p>
+   <div class="grid g2" style="margin-top:30px;text-align:left" id="advs"></div>
+ </div></section>
+
+ <section><div class="wrap">
+   <div class="card center" style="background:var(--soft);border:0;padding:46px 20px">
+     <h2>Готовы начать?</h2>
+     <p class="lead">Получите персональное предложение за 15 минут.</p>
+     <button class="btn" style="margin-top:22px" data-open="lead">Оставить заявку</button>
+   </div>
+ </div></section>
+</div>
+
+<div class="page" id="p-menu">
+ <section style="padding-top:34px"><div class="wrap">
+   <div class="promo">
+     <div>
+       <span class="tag" style="background:#fff">Акция</span>
+       <h1><span>5 за 250</span>каждый день новое меню</h1>
+       <div class="chips" style="margin-top:20px"><a>Новые блюда каждый день</a><a>Много и сытно</a><a>Выгодно и удобно</a></div>
+     </div>
+     <div class="hero-art" id="promoArt" style="background:#fff"></div>
+   </div>
+ </div></section>
+
+ <section style="padding-top:0"><div class="wrap">
+   <span class="tag">Меню</span>
+   <h2>Основное меню</h2>
+   <p class="lead">Свежие и вкусные блюда для всей команды.</p>
+   <div class="chips" id="menuChips"></div>
+   <div id="menuBody"></div>
+ </div></section>
+
+ <section><div class="wrap">
+   <div class="where">
+     <h2>Приходите или закажите</h2>
+     <p class="lead">Мы рядом — вкусно в любом формате.</p>
+     <div class="grid g2" style="margin-top:22px">
+       <div class="card"><h3>Приходите к нам</h3><p>Уютная атмосфера и свежие блюда каждый день.</p></div>
+       <div class="card"><h3>Закажите доставку</h3><p>Быстро, удобно и горячим к вам.</p></div>
+     </div>
+     <h3 style="margin-top:26px">Доставка осуществляется через сервисы:</h3>
+     <div class="dlv"><span>Доставка-1</span><span>Еда-Сервис</span><span>Курьер+</span></div>
+   </div>
+ </div></section>
+
+ <section style="padding-top:0"><div class="wrap two">
+   <div>
+     <span class="tag">О нас</span>
+     <h2>Добрая кухня — забота о каждом</h2>
+     <p class="lead">Мы — сеть столовых с полным циклом производства. Готовим по домашним рецептам из свежих сезонных продуктов. Ежедневно обслуживаем более 5000 человек.</p>
+     <p class="lead" style="margin-top:10px">Наша миссия — сделать правильное питание доступным и вкусным. Мы строго контролируем качество на всех этапах: от закупки до подачи на стол.</p>
+   </div>
+   <div class="hero-art" id="about2Art" style="aspect-ratio:5/4"></div>
+ </div></section>
+
+ <section id="addr" class="gray"><div class="wrap">
+   <div class="center"><span class="tag" style="background:#fff">Контакты</span><h2>Наши адреса</h2>
+   <p class="lead">Приходите к нам в гости или заказывайте доставку.</p></div>
+   <div id="addrBody"></div>
+ </div></section>
+
+ <section id="jobs"><div class="wrap two">
+   <div>
+     <span class="tag">Вакансии</span>
+     <h2>Присоединяйтесь</h2>
+     <p class="lead">Мы ищем талантливых людей, готовых расти вместе с нами. Официальное трудоустройство, достойная зарплата и дружный коллектив.</p>
+     <ul class="perks"><li>Официальное трудоустройство</li><li>Конкурентная зарплата</li><li>Бесплатное питание</li><li>Обучение и карьерный рост</li><li>Дружный коллектив</li></ul>
+   </div>
+   <div class="card">
+     <h3 style="margin-bottom:14px">Отправить резюме</h3>
+     <form data-form="Резюме отправлено (демо)">
+       <label>ФИО<input required placeholder="Иванов Иван Иванович"></label>
+       <label>Телефон<input required type="tel" placeholder="+7 (___) ___-__-__"></label>
+       <label>E-mail<input type="email" placeholder="example@mail.ru"></label>
+       <label>Резюме<input type="file"></label>
+       <button class="btn">Отправить</button>
+     </form>
+   </div>
+ </div></section>
+</div>
+
+<div class="page" id="p-banket">
+ <section class="gray"><div class="wrap">
+   <div class="promo light" style="background:#fff">
+     <div>
+       <span class="tag">Банкетные залы</span>
+       <h1>Проведите праздник в уютной атмосфере</h1>
+       <p class="lead">Для рождений, свадеб, поминок, корпоративов — у нас есть пространство для вашего события. Вкусное меню, индивидуальный подход и работа в удобном формате.</p>
+       <button class="btn" style="margin-top:24px" data-open="book">Забронировать</button>
+     </div>
+     <div class="hero-art" id="banArt"></div>
+   </div>
+ </div></section>
+
+ <section><div class="wrap center">
+   <span class="tag">Меню</span><h2>Основное меню</h2>
+   <p class="lead">Свежие и вкусные блюда для вашего праздника.</p>
+   <div id="banMenu" style="text-align:left"></div>
+ </div></section>
+
+ <section class="gray"><div class="wrap center">
+   <span class="tag" style="background:#fff">Мероприятия</span>
+   <h2>Всё для вашего мероприятия</h2>
+   <p class="lead">Мы подберём меню и оформим зал под ваш формат.</p>
+   <div class="grid g2" style="margin-top:28px;text-align:left">
+     <div class="card"><div class="ico">🎂</div><h3>Дни рождения и юбилеи</h3><p>Уютная семейная атмосфера, праздничное меню и индивидуальное оформление зала.</p></div>
+     <div class="card"><div class="ico">🕯️</div><h3>Поминки и семейные обеды</h3><p>Спокойное пространство, внимательное обслуживание и традиционное меню.</p></div>
+     <div class="card"><div class="ico">💼</div><h3>Корпоративы и банкеты</h3><p>Деловые встречи, праздники коллектива и партнёрские мероприятия.</p></div>
+     <div class="card"><div class="ico">💍</div><h3>Свадьбы и торжества</h3><p>Нарядные залы до 80 человек, фуршет или полноценный банкет.</p></div>
+   </div>
+ </div></section>
+
+ <section><div class="wrap">
+   <div class="center"><span class="tag">Наши залы</span><h2>Столовые для вашего банкета</h2>
+   <p class="lead">Выберите удобную локацию — у каждой столовой есть отдельный зал.</p></div>
+   <div id="halls"></div>
+ </div></section>
+
+ <section style="padding-top:0"><div class="wrap">
+   <div class="card center" style="background:var(--soft);border:0;padding:46px 20px">
+     <h2>Остались вопросы?</h2>
+     <p class="lead">Свяжитесь с нашим менеджером — подберём идеальный вариант для вашего мероприятия.</p>
+     <button class="btn" style="margin-top:22px" data-open="lead">Связаться</button>
+   </div>
+ </div></section>
+</div>
+</main>
+
+<footer><div class="wrap">
+  <div class="fgrid">
+    <div><a class="logo" href="#/"><i>Д</i>Добрая кухня</a><p style="color:var(--mute);font-size:14px;margin-top:12px;max-width:280px">Народная столовая. Комплексное питание с 2015 года.</p></div>
+    <div><h4>Разделы</h4><ul><li><a href="#/menu">Меню</a></li><li><a href="#/">Как стать клиентом</a></li><li><a href="#/banket">Банкеты</a></li><li><a href="#/menu-jobs">Вакансии</a></li></ul></div>
+    <div><h4>Адреса</h4><ul><li>ул. Примерная, 1</li><li>ул. Образцовая, 25</li><li>пр. Тестовый, 10</li></ul></div>
+    <div><h4>Контакты</h4><ul><li>+7 (900) 000-00-00</li><li>info@example.ru</li></ul></div>
+  </div>
+  <div class="fbot">
+    <span>© Добрая кухня, 2026</span>
+    <span class="foot__made">Создан в <a href="https://web-atelie.ru/">«Веб-Ателье»</a><img src="assets/web-atelie.png" alt=""></span>
+    <span class="foot__demo">Демо-концепт корпоративного сайта сети столовых. Название, контакты, цены и отзывы условные, фото — из стоковой библиотеки.</span>
+  </div>
+</div></footer>
+
+<div class="modal" id="m-lead"><div class="box"><button class="x" data-close>×</button>
+  <div class="form-part"><span class="tag">Заявка</span><h3>Забронируйте обеды</h3><p class="sub">Мы свяжемся с вами в течение 15 минут.</p>
+  <form data-modal>
+    <label>Ваше имя<input required placeholder="Иван Иванов"></label>
+    <label>Телефон<input required type="tel" placeholder="+7 (___) ___-__-__"></label>
+    <label>E-mail<input type="email" placeholder="example@mail.ru"></label>
+    <label>Количество сотрудников<input type="number" min="1" placeholder="Например, 20"></label>
+    <button class="btn">Отправить заявку</button>
+    <small style="color:var(--mute);font-size:12px">Нажимая на кнопку, вы соглашаетесь на обработку персональных данных (демо).</small>
+  </form></div>
+  <div class="ok"><div class="ico">✅</div><h3>Спасибо!</h3><p class="sub">Это демо — заявка никуда не отправляется.</p></div>
+</div></div>
+
+<div class="modal" id="m-book"><div class="box"><button class="x" data-close>×</button>
+  <div class="form-part"><h3>Бронирование банкета</h3><p class="sub">Выберите удобную дату и зал.</p>
+  <form data-modal>
+    <label>Имя<input required placeholder="Ваше имя"></label>
+    <label>Телефон<input required type="tel" placeholder="+7 (___) ___-__-__"></label>
+    <label>Дата мероприятия<input type="date" required></label>
+    <label>Количество гостей<input type="number" min="5" max="80" placeholder="От 5 до 80"></label>
+    <label>Столовая<select id="hallSel"></select></label>
+    <label>Тип мероприятия<select><option>День рождения</option><option>Юбилей</option><option>Корпоратив</option><option>Свадьба</option><option>Поминки</option><option>Другое</option></select></label>
+    <button class="btn">Отправить заявку</button>
+  </form></div>
+  <div class="ok"><div class="ico">✅</div><h3>Спасибо!</h3><p class="sub">Это демо — бронь никуда не отправляется.</p></div>
+</div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+var PAL={borsch:'#b3261e',soup:'#e9b44c',shi:'#9bbf6a',pump:'#e8913a',chick:'#c98a4b',fish:'#d9c7a3',beef:'#8a5a3b',meat:'#a8693f',rice:'#f3efe4',buck:'#7a5a3a',pot:'#e8c860',veg:'#6fa05a',salad:'#7fb069',caes:'#a9c978',oliv:'#e7d6a5',drink:'#c4492f',kiss:'#8e2f4f',tea:'#a9733c',mors:'#b5334a'};
+var CUPS={drink:1,kiss:1,tea:1,mors:1};
+function plate(k){return '<img src="assets/'+k+'.webp" alt="" loading="lazy">'}
+function plateOld(k,seed){
+  var c=PAL[k]||'#e9b44c',s=(seed||1)*37,i,dots='';
+  if(CUPS[k])return '<svg viewBox="0 0 200 150" preserveAspectRatio="xMidYMid slice"><rect width="200" height="150" fill="#ffe9cf"/><ellipse cx="100" cy="128" rx="46" ry="8" fill="#0001"/><path d="M68 48h64l-6 74a8 8 0 0 1-8 7H82a8 8 0 0 1-8-7z" fill="#fff" stroke="#d8d4c9" stroke-width="2"/><path d="M71 70h58l-4 52a6 6 0 0 1-6 5H81a6 6 0 0 1-6-5z" fill="'+c+'"/><ellipse cx="100" cy="48" rx="32" ry="5" fill="#fff" stroke="#d8d4c9" stroke-width="2"/></svg>';
+  for(i=0;i<9;i++){var a=(s*(i+3))%360,r=6+(s*(i+5))%30;
+    dots+='<circle cx="'+(100+Math.cos(a)*r).toFixed(1)+'" cy="'+(76+Math.sin(a)*r*0.8).toFixed(1)+'" r="'+(6+(i*3+s)%8)+'" fill="'+c+'" opacity="'+(0.6+((i*7+s)%4)/10)+'"/>';}
+  return '<svg viewBox="0 0 200 150" preserveAspectRatio="xMidYMid slice"><rect width="200" height="150" fill="#ffe9cf"/><ellipse cx="100" cy="80" rx="76" ry="60" fill="#fff" stroke="#ddd8cc" stroke-width="2"/><ellipse cx="100" cy="78" rx="58" ry="45" fill="#fff6e8"/>'+dots+'</svg>';
+}
+function tray(){return '<img src="assets/tray.webp" alt="" style="width:100%;height:100%;object-fit:cover">'}
+function trayOld(){return '<svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><rect width="400" height="300" fill="#ffe9cf"/><rect x="40" y="40" width="320" height="220" rx="22" fill="#fff" stroke="#ddd8cc" stroke-width="2"/><ellipse cx="130" cy="120" rx="62" ry="50" fill="#fff" stroke="#ddd8cc" stroke-width="2"/><ellipse cx="130" cy="120" rx="46" ry="36" fill="#b3261e"/><ellipse cx="115" cy="112" rx="10" ry="7" fill="#f1e9c8"/><ellipse cx="260" cy="125" rx="58" ry="46" fill="#fff" stroke="#ddd8cc" stroke-width="2"/><ellipse cx="260" cy="125" rx="42" ry="32" fill="#e8c860"/><circle cx="248" cy="122" r="10" fill="#a8693f"/><circle cx="275" cy="132" r="8" fill="#7fb069"/><ellipse cx="190" cy="210" rx="52" ry="26" fill="#fff" stroke="#ddd8cc" stroke-width="2"/><ellipse cx="190" cy="210" rx="38" ry="18" fill="#6fa05a"/><rect x="305" y="170" width="34" height="62" rx="10" fill="#fff" stroke="#ddd8cc" stroke-width="2"/><rect x="309" y="190" width="26" height="38" rx="7" fill="#c4492f"/></svg>';}
+function room(k){return '<img src="assets/'+(k||'hall')+'.webp" alt="" style="width:100%;height:100%;object-fit:cover">'}
+function roomOld(){return '<svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><rect width="400" height="300" fill="#ffe9cf"/><rect y="200" width="400" height="100" fill="#e4e0d6"/><rect x="60" y="150" width="280" height="14" rx="6" fill="#bfb8a8"/><rect x="80" y="164" width="10" height="46" fill="#bfb8a8"/><rect x="310" y="164" width="10" height="46" fill="#bfb8a8"/><g fill="#fff" stroke="#cfc8b8" stroke-width="2"><circle cx="110" cy="136" r="14"/><circle cx="170" cy="136" r="14"/><circle cx="230" cy="136" r="14"/><circle cx="290" cy="136" r="14"/></g><g fill="#8e8574"><rect x="150" y="40" width="4" height="50"/><rect x="246" y="40" width="4" height="50"/><circle cx="152" cy="94" r="12"/><circle cx="248" cy="94" r="12"/></g></svg>';}
+
+var MENU=[
+ ['Первые блюда','🥣',[['Борщ с говядиной','borsch','300 г','свёкла, говядина, капуста, картофель, сметана',95],['Суп куриный с лапшой','soup','250 г','курица, лапша, морковь, картофель',80],['Щи из свежей капусты','shi','300 г','капуста, картофель, морковь, зелень',75],['Суп-пюре из тыквы','pump','250 г','тыква, сливки, картофель, гренки',90]]],
+ ['Горячие блюда','🍽️',[['Куриная котлета с пюре','chick','200 г','курица, лук, хлеб, молоко, специи',120],['Рыба запечённая с овощами','fish','220 г','филе рыбы, морковь, лук, перец',150],['Говядина с грибами','beef','190 г','говядина, шампиньоны, сливки, лук',170],['Курица в сливочном соусе','meat','200 г','куриное филе, сливки, чеснок',140]]],
+ ['Гарниры','🍚',[['Рис отварной','rice','150 г','рис, масло сливочное, соль',45],['Гречка с грибами','buck','150 г','гречка, шампиньоны, лук',55],['Картофельное пюре','pot','150 г','картофель, молоко, масло сливочное',55],['Овощи на гриле','veg','150 г','кабачок, перец, баклажан',70]]],
+ ['Салаты','🥗',[['Салат «Греческий»','salad','150 г','помидоры, огурцы, перец, фета, оливки',110],['Цезарь с курицей','caes','170 г','курица, салат, пармезан, сухарики',135],['Оливье с говядиной','oliv','160 г','говядина, картофель, горошек, яйцо',100],['Салат с тунцом','salad','160 г','тунец, овощи, яйцо, оливки',140]]],
+ ['Напитки','🥤',[['Компот из сухофруктов','drink','200 мл','сухофрукты, сахар, вода',30],['Кисель ягодный','kiss','200 мл','ягоды, крахмал, сахар',35],['Чай с лимоном','tea','200 мл','чай, лимон, сахар',25],['Морс клюквенный','mors','200 мл','клюква, сахар, вода',40]]]
+];
+var DAYS=['Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
+var SETS=[
+ [['Борщ','borsch','300 г'],['Котлета с пюре','chick','230 г'],['Салат «Греческий»','salad','100 г'],['Морс','mors','200 мл']],
+ [['Суп куриный','soup','300 г'],['Рыба с овощами','fish','200 г'],['Гречка с грибами','buck','150 г'],['Компот','drink','200 мл']],
+ [['Щи','shi','300 г'],['Говядина с грибами','beef','190 г'],['Рис','rice','150 г'],['Кисель','kiss','200 мл']],
+ [['Суп-пюре тыквенный','pump','250 г'],['Курица в соусе','meat','200 г'],['Овощи на гриле','veg','150 г'],['Чай','tea','200 мл']],
+ [['Борщ','borsch','300 г'],['Рыба запечённая','fish','200 г'],['Картофель','pot','150 г'],['Морс','mors','200 мл']],
+ [['Суп куриный','soup','300 г'],['Котлета','chick','200 г'],['Рис','rice','150 г'],['Компот','drink','200 мл']],
+ [['Щи','shi','300 г'],['Курица','meat','200 г'],['Гречка','buck','150 г'],['Чай','tea','200 мл']]
+];
+var ADV=[['🍳','Собственная кухня','800 м² современного оборудования'],['🌿','Сезонные продукты','Закупка у местных производителей'],['🕒','Доставка по графику','Точность до минуты'],['👤','Персональный менеджер','Поддержка 24/7'],['🛡️','Контроль качества','Многоступенчатая проверка'],['🤝','Гибкие условия','Индивидуальный подход к каждому']];
+var REV=[['Т','Татьяна','Заказываем обеды в офис, когда на неделе нет времени готовить. Очень удобно!'],['Ю','Юлия','Заказывала впервые, очень понравилось. Всё вовремя, вкусно, разнообразно.'],['Я','Ян','Живу один, каждый день не успеваю готовить. Вкусная домашняя еда стала спасением.'],['Е','Екатерина','Заказываем обеды в офис второй год. Порции хорошие, еда всегда горячая.']];
+var CITIES=[['Город Первый',['ул. Примерная, 1','пр. Тестовый, 10','ул. Образцовая, 25','ул. Условная, 40']],['Город Второй',['ул. Демонстрационная, 12','пр. Макетный, 8','ул. Придуманная, 22','ул. Вымышленная, 33']],['Город Третий',['пр. Пробный, 100','ул. Условная, 25','наб. Демо, 45','пр. Макетный, 150']]];
+var HALLS=[['Народная столовая (Центральная)','ул. Примерная, 1 · Город Первый','До 70 человек · свой зал, музыкальная аппаратура'],['Народная столовая (Вокзальная)','ул. Образцовая, 25 · Город Первый','До 50 человек · летняя веранда'],['Народная столовая (Фабричная)','пр. Тестовый, 10 · Город Второй','До 80 человек · два зала, парковка']];
+
+function $(s){return document.querySelector(s)}
+function dishCard(d,i){return '<div class="dish"><div class="pic">'+plate(d[1],i+2)+'</div><div class="txt"><b>'+d[0]+'</b><span class="meta">'+d[2]+'</span><span class="meta">Состав: '+d[3]+'</span><span class="price">'+d[4]+' ₽</span></div></div>'}
+function menuHTML(cats,pre){return cats.map(function(c,ci){return '<div class="cat" id="'+pre+ci+'"><h3><span>'+c[1]+'</span>'+c[0]+'</h3><div class="grid g4">'+c[2].map(function(d,i){return dishCard(d,i+ci*4)}).join('')+'</div></div>'}).join('')}
+$('#heroArt').innerHTML=tray();$('#aboutArt').innerHTML=room();$('#about2Art').innerHTML=room();$('#promoArt').innerHTML=tray();$('#banArt').innerHTML=room('banquet');
+$('#menuBody').innerHTML=menuHTML(MENU,'c');
+$('#menuChips').innerHTML=MENU.map(function(c,i){return '<a data-go="c'+i+'">'+c[1]+' '+c[0]+'</a>'}).join('');
+$('#banMenu').innerHTML=menuHTML(MENU.slice(0,2),'b');
+$('#advs').innerHTML=ADV.map(function(a){return '<div class="card" style="display:flex;gap:14px;align-items:flex-start"><div class="ico" style="margin:0">'+a[0]+'</div><div><h3>'+a[1]+'</h3><p>'+a[2]+'</p></div></div>'}).join('');
+$('#revs').innerHTML=REV.map(function(r){return '<div class="card rev"><div class="ava">'+r[0]+'</div><h3>'+r[1]+'</h3><p style="margin:0">'+r[2]+'</p></div>'}).join('');
+$('#addrBody').innerHTML=CITIES.map(function(c,ci){return '<div class="city"><h3>'+c[0]+'</h3><div class="grid g4">'+c[1].map(function(a,i){return '<div class="card adr"><div class="pic">'+room()+'</div><b>'+a+'</b><span>+7 (900) 000-00-0'+(ci+i)+'</span><span>Пн–Вс: 8:00–20:00</span><button class="btn ghost sm" style="margin-top:10px" data-toast="В демо карта не подключена">Открыть на карте</button></div>'}).join('')+'</div></div>'}).join('');
+$('#halls').innerHTML=HALLS.map(function(h,i){return '<div class="card hall" style="margin-top:20px"><div><span class="badge">Банкетный зал</span><h3 style="font-size:21px;margin-top:10px">'+h[0]+'</h3><p style="color:var(--mute);margin:8px 0">📍 '+h[1]+'</p><p>'+h[2]+'. Тёплая атмосфера, меню на выбор, оформление под ваш повод.</p><div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap"><button class="btn sm" data-open="book" data-hall="'+i+'">Забронировать</button><button class="btn ghost sm" data-toast="В демо карта не подключена">На карте</button></div></div><div class="gal"><div>'+room('banquet')+'</div><div>'+tray()+'</div><div>'+room()+'</div><div>'+plate('chick')+'</div><div>'+plate('salad')+'</div><div>'+plate('mors')+'</div><div class="vid">▶ Видео о зале (демо)</div></div></div>'}).join('');
+$('#hallSel').innerHTML=HALLS.map(function(h,i){return '<option value="'+i+'">'+h[0]+'</option>'}).join('');
+
+function renderSet(d){
+  $('#days').innerHTML=DAYS.map(function(x,i){return '<button class="'+(i===d?'on':'')+'" data-d="'+i+'">'+x+'</button>'}).join('');
+  $('#set').innerHTML=SETS[d].map(function(x,i){return '<div class="card"><div class="pic">'+plate(x[1],d*4+i+1)+'</div><div class="txt"><b>'+x[0]+'</b><small>'+x[2]+'</small></div></div>'}).join('');
+}
+renderSet(0);
+$('#days').addEventListener('click',function(e){var b=e.target.closest('button');if(b)renderSet(+b.dataset.d)});
+
+function route(){
+  var h=location.hash.replace('#','')||'/',r='home',jump=null;
+  if(h==='/menu')r='menu';else if(h==='/banket')r='banket';
+  else if(h==='/menu-addr'){r='menu';jump='addr'}else if(h==='/menu-jobs'){r='menu';jump='jobs'}
+  document.querySelectorAll('.page').forEach(function(p){p.classList.toggle('on',p.id==='p-'+r)});
+  document.querySelectorAll('.nav a').forEach(function(a){a.classList.toggle('on',a.dataset.r===(jump||r))});
+  $('#nav').classList.remove('open');
+  if(jump)setTimeout(function(){document.getElementById(jump).scrollIntoView({behavior:'smooth'})},50);else window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',route);route();
+$('#burger').onclick=function(){$('#nav').classList.toggle('open')};
+
+var tt;
+function toast(t){var el=$('#toast');el.textContent=t;el.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){el.classList.remove('on')},2200)}
+document.addEventListener('click',function(e){
+  var g=e.target.closest('[data-go]');if(g){document.getElementById(g.dataset.go).scrollIntoView({behavior:'smooth'});return}
+  var o=e.target.closest('[data-open]');
+  if(o){var m=$('#m-'+o.dataset.open);if(o.dataset.hall)$('#hallSel').value=o.dataset.hall;m.querySelector('.form-part').style.display='';m.querySelector('.ok').classList.remove('on');m.classList.add('on');return}
+  if(e.target.closest('[data-close]')||e.target.classList.contains('modal')){document.querySelectorAll('.modal').forEach(function(m){m.classList.remove('on')});return}
+  var t=e.target.closest('[data-toast]');if(t)toast(t.dataset.toast);
+});
+document.addEventListener('submit',function(e){
+  e.preventDefault();var f=e.target,m=f.closest('.modal');
+  if(m){m.querySelector('.form-part').style.display='none';m.querySelector('.ok').classList.add('on')}else{toast(f.dataset.form||'Отправлено (демо)')}
+  f.reset();
+});
+</script>
+</body>
+</html>
